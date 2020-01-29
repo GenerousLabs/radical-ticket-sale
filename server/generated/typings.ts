@@ -78,7 +78,6 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     campaignStatus: NexusGenRootTypes['CampaignStatusType']; // CampaignStatusType!
-    hello: string; // String!
     pledgeStatus: NexusGenRootTypes['PledgeStatusType']; // PledgeStatusType!
   }
   SubmitEmailResponse: { // field return type
@@ -98,11 +97,6 @@ export interface NexusGenArgTypes {
     }
     SubmitPledge: { // args
       input: NexusGenInputs['SubmitPledgeInput']; // SubmitPledgeInput!
-    }
-  }
-  Query: {
-    hello: { // args
-      name?: string | null; // String
     }
   }
 }

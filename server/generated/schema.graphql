@@ -21,7 +21,6 @@ type PledgeStatusType {
 
 type Query {
   campaignStatus: CampaignStatusType!
-  hello(name: String): String!
   pledgeStatus: PledgeStatusType!
 }
 
