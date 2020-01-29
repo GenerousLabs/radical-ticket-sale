@@ -36,8 +36,6 @@ const Pledge = () => {
 
   return (
     <div className={classes.container}>
-      <Typography variant="h2">Kiez Burn 2020</Typography>
-
       <Paper className={classes.paper}>
         <Typography variant="h3">Legal name</Typography>
         <Typography>Enter your legal name</Typography>
