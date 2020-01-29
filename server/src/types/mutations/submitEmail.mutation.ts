@@ -15,7 +15,7 @@ const submitEmailResponse = objectType({
   }
 });
 
-export const submitEmail = mutationField("submitEmail", {
+export default mutationField("submitEmail", {
   type: submitEmailResponse,
   args: {
     input: SubmitEmailInput.asArg({ required: true })
