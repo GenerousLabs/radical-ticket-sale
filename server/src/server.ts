@@ -1,22 +1,25 @@
-import errorHandler from "errorhandler";
+import { queryType, stringArg, makeSchema } from "nexus";
+import { GraphQLServer } from "graphql-yoga";
 
-import app from "./app";
-
-/**
- * Error Handler. Provides full stack - remove for production
- */
-app.use(errorHandler());
-
-/**
- * Start Express server.
- */
-const server = app.listen(app.get("port"), () => {
-    console.log(
-        "  App is running at http://localhost:%d in %s mode",
-        app.get("port"),
-        app.get("env")
-    );
-    console.log("  Press CTRL-C to stop\n");
+const Query = queryType({
+  definition(t) {
+    t.string("hello", {
+      args: { name: stringArg({ nullable: true }) },
+      resolve: (parent, { name }) => `Hello ${name || "World"}!`,
+    });
+  },
 });
 
-export default server;
+const schema = makeSchema({
+  types: [Query],
+  outputs: {
+    schema: __dirname + "/../generated/schema.graphql",
+    typegen: __dirname + "/../generated/typings.ts",
+  },
+});
+
+const server = new GraphQLServer({
+  schema,
+});
+
+server.start(() => "Server is running on http://localhost:4000 #BqKNOE");
