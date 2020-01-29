@@ -152,13 +152,14 @@ const Pledge = () => {
         <div>
           {!hasCustomPrice ? null : (
             <>
-              Enter your price{" "}
+              Enter your price €
               <Input
                 type="text"
                 onChange={event => {
-                  setPrice(Math.round(parseFloat(event.target.value) * 100));
+                  setPrice(Math.round(parseFloat(event.target.value)) * 100);
                 }}
-              ></Input>
+              />
+              .00
             </>
           )}
         </div>
