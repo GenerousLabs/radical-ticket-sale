@@ -8,10 +8,22 @@ import {
   Button
 } from "@material-ui/core";
 
+import { AppState } from "../../store";
 import CampaignStatus from "../CampaignStatus/CampaignStatus.scene";
+import Pledge from "../Pledge/Pledge.scene";
+import { useSelector } from "react-redux";
 
 const Home: React.FC = () => {
   const classes = useStyles();
+  const hasToken = useSelector((state: AppState) => state.token.token !== "");
+
+  if (hasToken) {
+    return (
+      <div className={classes.container}>
+        <Pledge />
+      </div>
+    );
+  }
 
   return (
     <div className={classes.container}>
@@ -32,7 +44,7 @@ const Home: React.FC = () => {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
-      paddingTop: 30
+      // paddingTop: 30
     },
     paper: {
       padding: theme.spacing(2),
