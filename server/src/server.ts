@@ -1,4 +1,4 @@
-import { queryType, stringArg, makeSchema, mutationType } from "nexus";
+import { queryType, stringArg, makeSchema } from "nexus";
 import { GraphQLServer } from "graphql-yoga";
 
 import { submitEmail } from "./types/mutations/submitEmail.mutation";
