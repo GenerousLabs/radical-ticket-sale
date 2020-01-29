@@ -1,13 +1,13 @@
 import React from "react";
 
-import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
+import { createStyles, Theme, makeStyles } from "@material-ui/core";
 
-const Home: React.FC<Props> = props => {
-  const { classes } = props;
+const Home: React.FC = () => {
+  const classes = useStyles();
 
   return (
     <div className={classes.container}>
-      <h1>You're logged in</h1>
+      <h1>You're NOT logged in</h1>
       <p>
         Edit this page in <code>frontend/src/scenes/Home/Home.scene.tsx</code>
       </p>
@@ -15,7 +15,7 @@ const Home: React.FC<Props> = props => {
   );
 };
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     anonContainer: {
       paddingTop: "10vh",
@@ -23,8 +23,7 @@ const styles = (theme: Theme) =>
       fontSize: "3em"
     },
     container: {}
-  });
+  })
+);
 
-type Props = WithStyles<typeof styles>;
-
-export default withStyles(styles)(Home);
+export default Home;
