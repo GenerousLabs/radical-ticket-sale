@@ -1,10 +1,10 @@
 import { makeSchema } from "nexus";
 import { GraphQLServer } from "graphql-yoga";
 
-import campaignStatus from "./types/queries/campaignStatus.query";
-import pledgeStatus from "./types/queries/pledgeStatus.query";
-import submitEmail from "./types/mutations/submitEmail.mutation";
-import submitPledge from "./types/mutations/submitPledge.mutation";
+import campaignStatus from "./schema/queries/campaignStatus.query";
+import pledgeStatus from "./schema/queries/pledgeStatus.query";
+import submitEmail from "./schema/mutations/submitEmail.mutation";
+import submitPledge from "./schema/mutations/submitPledge.mutation";
 
 const schema = makeSchema({
   types: [campaignStatus, pledgeStatus, submitEmail, submitPledge],

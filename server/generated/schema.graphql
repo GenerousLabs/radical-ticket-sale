@@ -3,8 +3,9 @@
 
 
 type CampaignStatusType {
+  currentPledgeCount: Int!
+  maximumPledgeCount: Int!
   minimumAmountCents: Int!
-  subscriberCount: Int!
   targetAmountCents: Int!
   totalPledgeAmountCents: Int!
 }

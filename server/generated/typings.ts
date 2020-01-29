@@ -30,8 +30,9 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   CampaignStatusType: { // root type
+    currentPledgeCount: number; // Int!
+    maximumPledgeCount: number; // Int!
     minimumAmountCents: number; // Int!
-    subscriberCount: number; // Int!
     targetAmountCents: number; // Int!
     totalPledgeAmountCents: number; // Int!
   }
@@ -63,8 +64,9 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 
 export interface NexusGenFieldTypes {
   CampaignStatusType: { // field return type
+    currentPledgeCount: number; // Int!
+    maximumPledgeCount: number; // Int!
     minimumAmountCents: number; // Int!
-    subscriberCount: number; // Int!
     targetAmountCents: number; // Int!
     totalPledgeAmountCents: number; // Int!
   }
