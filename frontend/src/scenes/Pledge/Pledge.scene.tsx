@@ -101,7 +101,7 @@ const Pledge = () => {
         <Typography>
           Kiez Burn e.V. needs at least €60'000 to organise the event. If we do
           not reach this minimum, there will not be an avent this year. To
-          organise a <strong>really awesome burn</strong> we need €84'000.
+          organise a <strong>really awesome burn</strong> we need €88'000.
         </Typography>
         <FormControl>
           <FormControlLabel
