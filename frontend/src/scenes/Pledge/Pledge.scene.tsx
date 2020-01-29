@@ -25,6 +25,7 @@ const Pledge = () => {
     {}
   );
   const [price, setPrice] = useState(-1);
+  const [hasCustomPrice, setCustomPrice] = useState(false);
 
   const handleChange = (field: string, checked: boolean) => {
     setAgreedTerms({ ...agreedTerms, [field]: checked });
@@ -118,7 +119,12 @@ const Pledge = () => {
           <RadioGroup
             aria-label="Price"
             onChange={(event, value) => {
-              setPrice(parseInt(value));
+              if (value === "0") {
+                setCustomPrice(true);
+              } else {
+                setCustomPrice(false);
+                setPrice(parseInt(value));
+              }
             }}
           >
             <FormControlLabel
@@ -143,7 +149,19 @@ const Pledge = () => {
             />
           </RadioGroup>
         </FormControl>
-        {price !== 0 ? null : <div>Enter your price</div>}
+        <div>
+          {!hasCustomPrice ? null : (
+            <>
+              Enter your price{" "}
+              <Input
+                type="text"
+                onChange={event => {
+                  setPrice(Math.round(parseFloat(event.target.value) * 100));
+                }}
+              ></Input>
+            </>
+          )}
+        </div>
       </Paper>
 
       {price === -1 ? null : (
