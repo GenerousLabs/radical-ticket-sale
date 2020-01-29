@@ -38,6 +38,7 @@ export interface NexusGenRootTypes {
   Mutation: {};
   PledgeStatusType: { // root type
     amountCents: number; // Int!
+    pledged: boolean; // Boolean!
   }
   Query: {};
   SubmitEmailResponse: { // root type
@@ -73,6 +74,7 @@ export interface NexusGenFieldTypes {
   }
   PledgeStatusType: { // field return type
     amountCents: number; // Int!
+    pledged: boolean; // Boolean!
   }
   Query: { // field return type
     campaignStatus: NexusGenRootTypes['CampaignStatusType']; // CampaignStatusType!

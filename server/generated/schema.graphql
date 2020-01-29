@@ -16,6 +16,7 @@ type Mutation {
 
 type PledgeStatusType {
   amountCents: Int!
+  pledged: Boolean!
 }
 
 type Query {
