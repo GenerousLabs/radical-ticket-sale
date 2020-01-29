@@ -1,40 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
 
-import {
-  Button,
-  createStyles,
-  Theme,
-  WithStyles,
-  withStyles
-} from "@material-ui/core";
-
-import { showLock } from "../../services/auth/auth.service";
-import { AppState } from "../../store";
+import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
 const Home: React.FC<Props> = props => {
-  const { classes, isLoggedIn } = props;
-
-  if (!isLoggedIn) {
-    return (
-      <div className={classes.anonContainer}>
-        <p>Login to get started.</p>
-        <Button
-          variant="contained"
-          size="large"
-          onClick={event => {
-            event.preventDefault();
-            showLock();
-          }}
-        >
-          Login or Sign Up
-        </Button>
-        <p>
-          Edit this page in <code>frontend/src/scenes/Home/Home.scene.tsx</code>
-        </p>
-      </div>
-    );
-  }
+  const { classes } = props;
 
   return (
     <div className={classes.container}>
@@ -44,12 +13,6 @@ const Home: React.FC<Props> = props => {
       </p>
     </div>
   );
-};
-
-const mapStateToProps = (state: AppState) => {
-  return {
-    isLoggedIn: state.auth.isLoggedIn
-  };
 };
 
 const styles = (theme: Theme) =>
@@ -62,8 +25,6 @@ const styles = (theme: Theme) =>
     container: {}
   });
 
-type StateProps = ReturnType<typeof mapStateToProps>;
+type Props = WithStyles<typeof styles>;
 
-type Props = StateProps & WithStyles<typeof styles>;
-
-export default connect(mapStateToProps)(withStyles(styles)(Home));
+export default withStyles(styles)(Home);

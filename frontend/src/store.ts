@@ -1,10 +1,10 @@
 import thunkMiddleware from "redux-thunk";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 
-import auth from "./services/auth/auth.state";
+const empty = (state = "", action: any) => state;
 
 const reducer = combineReducers({
-  auth
+  empty
 });
 
 export type AppState = ReturnType<typeof reducer>;
