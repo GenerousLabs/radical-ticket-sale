@@ -1,28 +1,44 @@
 import React from "react";
+import {
+  createStyles,
+  Theme,
+  makeStyles,
+  Typography,
+  Paper,
+  Button
+} from "@material-ui/core";
 
-import { createStyles, Theme, makeStyles } from "@material-ui/core";
+import CampaignStatus from "../CampaignStatus/CampaignStatus.scene";
 
 const Home: React.FC = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.container}>
-      <h1>You're NOT logged in</h1>
-      <p>
-        Edit this page in <code>frontend/src/scenes/Home/Home.scene.tsx</code>
-      </p>
+      <CampaignStatus />
+      <Typography variant="h2">You're NOT logged in</Typography>
+      <Paper elevation={1} className={classes.paper}>
+        <Typography>
+          Enter your email <input></input>
+        </Typography>
+        <Typography>
+          <Button variant="contained">Submit</Button>
+        </Typography>
+      </Paper>
     </div>
   );
 };
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    anonContainer: {
-      paddingTop: "10vh",
-      textAlign: "center",
-      fontSize: "3em"
+    container: {
+      paddingTop: 30
     },
-    container: {}
+    paper: {
+      padding: theme.spacing(2),
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2)
+    }
   })
 );
 
