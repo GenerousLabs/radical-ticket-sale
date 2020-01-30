@@ -101,9 +101,12 @@ const Pledge = () => {
         <Typography variant="h3">Be Fair</Typography>
         <Typography>How much do you want to pay for your ticket?</Typography>
         <Typography>
-          Kiez Burn e.V. needs at least €60'000 to organise the event. If we do
-          not reach this minimum, there will not be an avent this year. To
-          organise a <strong>really awesome burn</strong> we need €88'000.
+          €88 per person means we'll have the budget for more art, more dreams,
+          and better facilities. €60 per person means we'll have the minimum
+          possible burn. Less than this means other folks will cover some of
+          your ticket cost, or we might not be able to organise the event this
+          year. As a community we wish to support people of all income brackets,
+          so choose the ticket price that makes sense for you.
         </Typography>
         <FormControl>
           <FormControlLabel
