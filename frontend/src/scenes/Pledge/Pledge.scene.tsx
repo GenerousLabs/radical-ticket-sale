@@ -51,7 +51,8 @@ const Pledge = () => {
           possibility to make changes later.
         </Typography>
       </Paper>
-      <Paper className={classes.paper}>
+
+      {/* <Paper className={classes.paper}>
         <Typography variant="h3">No Refunds</Typography>
         <FormControl>
           <FormControlLabel
@@ -71,7 +72,7 @@ const Pledge = () => {
             the event has to be cancelled.
           </Typography>
         </FormControl>
-      </Paper>
+      </Paper> */}
 
       <Paper className={classes.paper}>
         <Typography variant="h3">No Transfers</Typography>
