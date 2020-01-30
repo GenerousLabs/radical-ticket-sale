@@ -182,8 +182,10 @@ const Pledge = () => {
           </Typography>
           <Typography>
             This is an open role for potential volunteers. Would you like to
-            support ticket transfers? You can read about this and get involved
-            here.
+            support ticket transfers?{" "}
+            <ExternalLink href="https://talk.kiezburn.org/d/zHmtjnwT/volunteer-for-ticket-transfers">
+              You can read about this and get involved here.
+            </ExternalLink>
           </Typography>
           <Typography>
             By checking the box above, you confirm that you accept there might
