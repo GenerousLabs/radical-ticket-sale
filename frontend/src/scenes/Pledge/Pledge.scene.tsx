@@ -187,7 +187,7 @@ const Pledge = () => {
         </FormControl>
       </Paper>
 
-      {!agreedTerms.fair ? null : (
+      {!Object.values(agreedTerms).every(a => a) ? null : (
         <>
           <Paper className={classes.paper}>
             <Typography variant="h3">Price</Typography>
