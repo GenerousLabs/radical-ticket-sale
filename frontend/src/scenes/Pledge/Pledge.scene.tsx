@@ -7,7 +7,6 @@ import {
   Input,
   Button,
   FormControl,
-  FormLabel,
   Checkbox,
   FormControlLabel,
   RadioGroup,
@@ -16,6 +15,15 @@ import {
 import { useSelector } from "react-redux";
 
 import { AppState } from "../../store";
+import { ExternalLink } from "../../components/ExternalLink";
+
+const numbers = {
+  min: "€60'000",
+  target: "€88'000",
+  spots: 1000,
+  minimumEuros: 60000,
+  targetEuros: 88000
+};
 
 const Pledge = () => {
   const classes = useStyles();
@@ -37,6 +45,61 @@ const Pledge = () => {
 
   return (
     <div className={classes.container}>
+      <Paper className={classes.paper}>
+        <Typography variant="h3">Welcome</Typography>
+        <Typography className={classes.p}>
+          Welcome to the Kiez Burn 2020 ticket extravaganza.
+        </Typography>
+        <Typography className={classes.p}>
+          We trust you already know what Kiez Burn is. But just in case, here's
+          a few links for you:
+        </Typography>
+        <ul>
+          <li>
+            <ExternalLink href="https://kiezburn.org">
+              The Kiez Burn web site
+            </ExternalLink>
+          </li>
+          <li>
+            <ExternalLink href="https://talk.kiezburn.org/dashboard">
+              The Talk platform where Kiez Burn decisions are discussed
+            </ExternalLink>
+          </li>
+          <li>
+            <ExternalLink href="https://kiezburn.org/home/about/11-principles/">
+              The Kiez Burn 11 principles
+            </ExternalLink>
+          </li>
+        </ul>
+        <Typography className={classes.p}>
+          In this spirit of cocreation and experimentation we're trying
+          something new for 2020.
+        </Typography>
+        <Typography className={classes.p}>
+          Based on our{" "}
+          <ExternalLink href="https://talk.kiezburn.org/g/QFjHmdZ2/2019-archive">
+            financials from 2019
+          </ExternalLink>
+          , a budget of <strong>{numbers.target}</strong> would make for a
+          fantastic Kiez Burn 2020. The bear minimum to make an event happen
+          would be at least {numbers.min}.
+        </Typography>
+        <Typography className={classes.p}>
+          What would you like Kiez Burn's budget to be for 2020?
+        </Typography>
+        <Typography className={classes.p}>
+          You're invited to vote with your wallet. On this page you can pledge
+          to buy a Kiez Burn ticket. The system will record your payment
+          information, and if we collect 1'000 pledges, and the total budget
+          from those pledges is more than our minimum, we'll collect all the
+          money. This sale begins 1 Feb and ends by 21 Feb, or whenever all
+          spots are filled.
+        </Typography>
+        <Typography className={classes.p}>
+          For more information, to ask questions, or to engage in this process,{" "}
+          <ExternalLink href="">click here</ExternalLink>.
+        </Typography>
+      </Paper>
       <Paper className={classes.paper}>
         <Typography variant="h3">Legal name</Typography>
         <Typography>Enter your legal name</Typography>
@@ -101,12 +164,13 @@ const Pledge = () => {
         <Typography variant="h3">Be Fair</Typography>
         <Typography>How much do you want to pay for your ticket?</Typography>
         <Typography>
-          €88 per person means we'll have the budget for more art, more dreams,
-          and better facilities. €60 per person means we'll have the minimum
-          possible burn. Less than this means other folks will cover some of
-          your ticket cost, or we might not be able to organise the event this
-          year. As a community we wish to support people of all income brackets,
-          so choose the ticket price that makes sense for you.
+          €{numbers.targetEuros / numbers.spots} per person means we'll have the
+          budget for more art, more dreams, and better facilities. €
+          {numbers.minimumEuros / numbers.spots} per person means we'll have the
+          minimum possible burn. Less than this means other folks will cover
+          some of your ticket cost, or we might not be able to organise the
+          event this year. As a community we wish to support people of all
+          income brackets, so choose the ticket price that makes sense for you.
         </Typography>
         <FormControl>
           <FormControlLabel
@@ -201,6 +265,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   paper: {
     padding: theme.spacing(2),
     marginTop: theme.spacing(2)
+  },
+  p: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1)
   }
 }));
 
