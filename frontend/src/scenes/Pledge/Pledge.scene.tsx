@@ -178,10 +178,17 @@ const Pledge = () => {
             label="I accept the NO TRANSFERS policy"
           />
           <Typography>
-            I understand this is a volunteer run event and that so far nobody
-            has volunteered to handle ticket transfers. Therefore I fully and
-            gladly accept that if I cannot attend the event FOR ANY REASON AT
-            ALL, I will not be able to transfer my ticket.
+            As of right now ticket transfers are not possible.
+          </Typography>
+          <Typography>
+            This is an open role for potential volunteers. Would you like to
+            support ticket transfers? You can read about this and get involved
+            here.
+          </Typography>
+          <Typography>
+            By checking the box above, you confirm that you accept there might
+            not be a possible to transfer your ticket. As of right now, and
+            until further notice, tickets are 100% non transferrable.
           </Typography>
         </FormControl>
       </Paper>
