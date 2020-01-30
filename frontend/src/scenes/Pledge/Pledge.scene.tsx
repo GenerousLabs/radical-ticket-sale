@@ -25,13 +25,16 @@ const numbers = {
   targetEuros: 88000
 };
 
+const checks = {
+  transfers: false,
+  fair: false
+};
+
 const Pledge = () => {
   const classes = useStyles();
   const hasToken = useSelector((state: AppState) => state.token.token !== "");
   const [name, setName] = useState("");
-  const [agreedTerms, setAgreedTerms] = useState<{ [key: string]: boolean }>(
-    {}
-  );
+  const [agreedTerms, setAgreedTerms] = useState(checks);
   const [price, setPrice] = useState(-1);
   const [hasCustomPrice, setCustomPrice] = useState(false);
 
@@ -145,7 +148,7 @@ const Pledge = () => {
             control={
               <Checkbox
                 onChange={(event, checked) => {
-                  handleChange("first", checked);
+                  handleChange("transfers", checked);
                 }}
               />
             }
@@ -176,81 +179,91 @@ const Pledge = () => {
           <FormControlLabel
             value="some"
             control={<Checkbox />}
+            onChange={(event, checked) => {
+              handleChange("fair", checked);
+            }}
             label="I promise to be as fair as possible in choosing my price"
           />
         </FormControl>
       </Paper>
-      <Paper className={classes.paper}>
-        <Typography variant="h3">Price</Typography>
-        <FormControl>
-          <Typography>Choose your price from the list below.</Typography>
-          <RadioGroup
-            aria-label="Price"
-            onChange={(event, value) => {
-              if (value === "0") {
-                setCustomPrice(true);
-              } else {
-                setCustomPrice(false);
-                setPrice(parseInt(value));
-              }
-            }}
-          >
-            <FormControlLabel
-              value="14800"
-              control={<Radio />}
-              label="Generous ticket - €148"
-            />
-            <FormControlLabel
-              value="9800"
-              control={<Radio />}
-              label="Standard ticket - €98"
-            />
-            <FormControlLabel
-              value="4000"
-              control={<Radio />}
-              label="Low income ticket - €40"
-            />
-            <FormControlLabel
-              value="0"
-              control={<Radio />}
-              label="Choose my own price"
-            />
-          </RadioGroup>
-        </FormControl>
-        <div>
-          {!hasCustomPrice ? null : (
-            <>
-              Enter your price €
-              <Input
-                type="text"
-                onChange={event => {
-                  setPrice(Math.round(parseFloat(event.target.value)) * 100);
-                }}
-              />
-              .00
-            </>
-          )}
-        </div>
-      </Paper>
 
-      {price === -1 ? null : (
+      {!agreedTerms.fair ? null : (
         <>
           <Paper className={classes.paper}>
-            <Typography variant="h3">Card Details</Typography>
-            <Typography>
-              You have chosen to pay €{(price / 100).toFixed(2)}
-            </Typography>
-            <Button variant="contained">Enter Card Details</Button>
+            <Typography variant="h3">Price</Typography>
+            <FormControl>
+              <Typography>Choose your price from the list below.</Typography>
+              <RadioGroup
+                aria-label="Price"
+                onChange={(event, value) => {
+                  if (value === "0") {
+                    setCustomPrice(true);
+                  } else {
+                    setCustomPrice(false);
+                    setPrice(parseInt(value));
+                  }
+                }}
+              >
+                <FormControlLabel
+                  value="14800"
+                  control={<Radio />}
+                  label="Generous ticket - €148"
+                />
+                <FormControlLabel
+                  value="9800"
+                  control={<Radio />}
+                  label="Standard ticket - €98"
+                />
+                <FormControlLabel
+                  value="4000"
+                  control={<Radio />}
+                  label="Low income ticket - €40"
+                />
+                <FormControlLabel
+                  value="0"
+                  control={<Radio />}
+                  label="Choose my own price"
+                />
+              </RadioGroup>
+            </FormControl>
+            <div>
+              {!hasCustomPrice ? null : (
+                <>
+                  Enter your price €
+                  <Input
+                    type="text"
+                    onChange={event => {
+                      setPrice(
+                        Math.round(parseFloat(event.target.value)) * 100
+                      );
+                    }}
+                  />
+                  .00
+                </>
+              )}
+            </div>
           </Paper>
 
-          <Paper className={classes.paper}>
-            <Typography variant="h3">Checkout</Typography>
-            <Typography>
-              If you're happy with all the details above. You can confirm your
-              order now.
-            </Typography>
-            <Button variant="contained">Checkout</Button>
-          </Paper>
+          {price === -1 ? null : (
+            <>
+              <Paper className={classes.paper}>
+                <Typography variant="h3">Card Details</Typography>
+                <Typography>
+                  You have chosen to pay €{(price / 100).toFixed(2)}
+                </Typography>
+                <Button variant="contained">Enter Card Details</Button>
+              </Paper>
+
+              <Paper className={classes.paper}>
+                <Typography variant="h3">Checkout</Typography>
+                <Typography>
+                  If you're happy with all the details above. You can confirm
+                  your order now.
+                </Typography>
+                <Button variant="contained">Checkout</Button>
+              </Paper>
+            </>
+          )}
         </>
       )}
     </div>
