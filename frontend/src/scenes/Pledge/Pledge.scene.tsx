@@ -118,6 +118,29 @@ const Pledge = () => {
         </Typography>
       </Paper>
 
+      <Paper className={classes.paper}>
+        <Typography variant="h3">Newsletters</Typography>
+        <FormControl>
+          <FormControlLabel
+            value="some"
+            control={
+              <Checkbox
+                onChange={(event, checked) => {
+                  console.log("newsletter setting #vBCle5");
+                }}
+              />
+            }
+            label="Please add me to the Kiez Burn mailing list"
+          />
+          <Typography>
+            If you want to be added to the Kiez Burn mailing list, check this
+            box. We will send some essential emails to you anyway, these are
+            thigns you will need to know for the event. But we won't add you to
+            the newsletter unless you explicitly consent.
+          </Typography>
+        </FormControl>
+      </Paper>
+
       {/* <Paper className={classes.paper}>
         <Typography variant="h3">No Refunds</Typography>
         <FormControl>
