@@ -228,9 +228,14 @@ const Pledge = () => {
                 }}
               >
                 <FormControlLabel
-                  value="14800"
+                  value="29800"
                   control={<Radio />}
                   label="Generous ticket - €148"
+                />
+                <FormControlLabel
+                  value="14800"
+                  control={<Radio />}
+                  label="Supporter ticket - €148"
                 />
                 <FormControlLabel
                   value="9800"
