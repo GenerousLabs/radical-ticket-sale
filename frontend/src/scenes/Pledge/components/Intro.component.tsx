@@ -2,12 +2,10 @@ import React from "react";
 import { Paper, Typography } from "@material-ui/core";
 
 import { ExternalLink } from "../../../components/ExternalLink";
-import { useStyles } from "../Pledge.scene";
+import { useStyles, Numbers } from "../Pledge.scene";
 
 type Props = {
-  numbers: {
-    [key: string]: string | number;
-  };
+  numbers: Numbers;
 };
 
 const Intro: React.FC<Props> = props => {
@@ -51,9 +49,9 @@ const Intro: React.FC<Props> = props => {
           <ExternalLink href="https://talk.kiezburn.org/g/QFjHmdZ2/2019-archive">
             financials from 2019
           </ExternalLink>
-          , a budget of <strong>{numbers.target}</strong> would make for a
+          , a budget of <strong>{numbers.text.target}</strong> would make for a
           fantastic Kiez Burn 2020. The bear minimum to make an event happen
-          would be at least {numbers.min}.
+          would be at least {numbers.text.min}.
         </Typography>
         <Typography className={classes.p}>
           What would you like Kiez Burn's budget to be for 2020?

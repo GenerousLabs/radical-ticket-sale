@@ -17,13 +17,28 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../store";
 import { ExternalLink } from "../../components/ExternalLink";
 import Intro from "./components/Intro.component";
+import Terms from "./components/Terms.component";
+import Payment from "./components/Payment.component";
 
-const numbers = {
-  min: "€60'000",
-  target: "€88'000",
-  spots: 1000,
-  minimumEuros: 60000,
-  targetEuros: 88000
+export type Numbers = {
+  text: {
+    [key: string]: string;
+  };
+  numbers: {
+    [key: string]: number; // Int
+  };
+};
+
+const numbers: Numbers = {
+  text: {
+    min: "€60'000",
+    target: "€88'000"
+  },
+  numbers: {
+    spots: 1000,
+    minimumEuros: 60000,
+    targetEuros: 88000
+  }
 };
 
 const checks = {
@@ -121,83 +136,7 @@ const Pledge = () => {
         </FormControl>
       </Paper>
 
-      {/* <Paper className={classes.paper}>
-        <Typography variant="h3">No Refunds</Typography>
-        <FormControl>
-          <FormControlLabel
-            value="some"
-            control={
-              <Checkbox
-                onChange={(event, checked) => {
-                  handleChange("first", checked);
-                }}
-              />
-            }
-            label="I accept the NO REFUND policy"
-          />
-          <Typography>
-            I understand this is a volunteer run event and that Kiez Burn e.V.
-            cannot guarantee that they will be able to give me any money back if
-            the event has to be cancelled.
-          </Typography>
-        </FormControl>
-      </Paper> */}
-
-      <Paper className={classes.paper}>
-        <Typography variant="h3">No Transfers</Typography>
-        <FormControl>
-          <FormControlLabel
-            value="some"
-            control={
-              <Checkbox
-                onChange={(event, checked) => {
-                  handleChange("transfers", checked);
-                }}
-              />
-            }
-            label="I accept the NO TRANSFERS policy"
-          />
-          <Typography>
-            As of right now ticket transfers are not possible.
-          </Typography>
-          <Typography>
-            This is an open role for potential volunteers. Would you like to
-            support ticket transfers?{" "}
-            <ExternalLink href="https://talk.kiezburn.org/d/zHmtjnwT/volunteer-for-ticket-transfers">
-              You can read about this and get involved here.
-            </ExternalLink>
-          </Typography>
-          <Typography>
-            By checking the box above, you confirm that you accept there might
-            not be a possible to transfer your ticket. As of right now, and
-            until further notice, tickets are 100% non transferrable.
-          </Typography>
-        </FormControl>
-      </Paper>
-
-      <Paper className={classes.paper}>
-        <Typography variant="h3">Be Fair</Typography>
-        <Typography>How much do you want to pay for your ticket?</Typography>
-        <Typography>
-          €{numbers.targetEuros / numbers.spots} per person means we'll have the
-          budget for more art, more dreams, and better facilities. €
-          {numbers.minimumEuros / numbers.spots} per person means we'll have the
-          minimum possible burn. Less than this means other folks will cover
-          some of your ticket cost, or we might not be able to organise the
-          event this year. As a community we wish to support people of all
-          income brackets, so choose the ticket price that makes sense for you.
-        </Typography>
-        <FormControl>
-          <FormControlLabel
-            value="some"
-            control={<Checkbox />}
-            onChange={(event, checked) => {
-              handleChange("fair", checked);
-            }}
-            label="I promise to be as fair as possible in choosing my price"
-          />
-        </FormControl>
-      </Paper>
+      <Terms handleChange={handleChange} numbers={numbers} />
 
       {!Object.values(agreedTerms).every(a => a) ? null : (
         <>
@@ -261,22 +200,16 @@ const Pledge = () => {
             </div>
           </Paper>
 
+          <Paper className={classes.paper}>
+            <Typography variant="h3">Terms</Typography>
+            <Typography>
+              Your payment is handled by stripe, on behalf of Kiez Burn e.V.
+            </Typography>
+          </Paper>
+
           {price === -1 ? null : (
             <>
-              <Paper className={classes.paper}>
-                <Typography variant="h3">Terms</Typography>
-                <Typography>
-                  Your payment is handled by stripe, on behalf of Kiez Burn e.V.
-                </Typography>
-              </Paper>
-
-              <Paper className={classes.paper}>
-                <Typography variant="h3">Payment</Typography>
-                <Typography>
-                  You have chosen to pay €{(price / 100).toFixed(2)}
-                </Typography>
-                <Button variant="contained">Enter Card Details</Button>
-              </Paper>
+              <Payment onSuccess={() => {}} price={price} />
 
               <Paper className={classes.paper}>
                 <Typography variant="h3">Checkout</Typography>
