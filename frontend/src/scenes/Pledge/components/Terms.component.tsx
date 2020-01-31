@@ -8,7 +8,8 @@ import {
 } from "@material-ui/core";
 
 import { ExternalLink } from "../../../components/ExternalLink";
-import { useStyles, Numbers } from "../Pledge.scene";
+import { Numbers } from "../Pledge.scene";
+import { useGenericStyles } from "../../../styles";
 
 type Props = {
   handleChange: (name: string, value: boolean) => void;
@@ -17,7 +18,7 @@ type Props = {
 
 const Terms: React.FC<Props> = props => {
   const { handleChange, numbers } = props;
-  const classes = useStyles();
+  const classes = useGenericStyles();
 
   return (
     <>

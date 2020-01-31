@@ -2,7 +2,8 @@ import React from "react";
 import { Paper, Typography } from "@material-ui/core";
 
 import { ExternalLink } from "../../../components/ExternalLink";
-import { useStyles, Numbers } from "../Pledge.scene";
+import { Numbers } from "../Pledge.scene";
+import { useGenericStyles } from "../../../styles";
 
 type Props = {
   numbers: Numbers;
@@ -10,7 +11,7 @@ type Props = {
 
 const Intro: React.FC<Props> = props => {
   const { numbers } = props;
-  const classes = useStyles();
+  const classes = useGenericStyles();
 
   return (
     <>

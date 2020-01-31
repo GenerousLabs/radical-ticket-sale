@@ -11,19 +11,27 @@ type CampaignStatusType {
 }
 
 input GetPaymentIntentInput {
+  paymentMethod: PaymentMethod
   price: Int!
 }
 
 type GetPaymentIntentResponse {
-  clientSecret: String!
+  intentClientSecret: String!
+  intentId: String!
   message: String
+  price: Int!
   success: Boolean!
 }
 
 type Mutation {
   getPaymentIntent(input: GetPaymentIntentInput!): GetPaymentIntentResponse!
   submitEmail(input: SubmitEmailInput!): SubmitEmailResponse!
-  SubmitPledge(input: SubmitPledgeInput!): SubmitPledgeResponse!
+  submitPledge(input: SubmitPledgeInput!): SubmitPledgeResponse!
+}
+
+enum PaymentMethod {
+  CARD
+  SEPA
 }
 
 type PledgeStatusType {
@@ -46,10 +54,10 @@ type SubmitEmailResponse {
 }
 
 input SubmitPledgeInput {
-  agreeTerms: Boolean!
+  agreeTerms: String!
   amountCents: Int!
+  intentId: String!
   legalName: String!
-  token: String!
 }
 
 type SubmitPledgeResponse {

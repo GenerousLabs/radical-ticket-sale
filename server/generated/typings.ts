@@ -15,20 +15,22 @@ declare global {
 
 export interface NexusGenInputs {
   GetPaymentIntentInput: { // input type
+    paymentMethod?: NexusGenEnums['PaymentMethod'] | null; // PaymentMethod
     price: number; // Int!
   }
   SubmitEmailInput: { // input type
     email: string; // String!
   }
   SubmitPledgeInput: { // input type
-    agreeTerms: boolean; // Boolean!
+    agreeTerms: string; // String!
     amountCents: number; // Int!
+    intentId: string; // String!
     legalName: string; // String!
-    token: string; // String!
   }
 }
 
 export interface NexusGenEnums {
+  PaymentMethod: "CARD" | "SEPA"
 }
 
 export interface NexusGenRootTypes {
@@ -40,8 +42,10 @@ export interface NexusGenRootTypes {
     totalPledgeAmountCents: number; // Int!
   }
   GetPaymentIntentResponse: { // root type
-    clientSecret: string; // String!
+    intentClientSecret: string; // String!
+    intentId: string; // String!
     message?: string | null; // String
+    price: number; // Int!
     success: boolean; // Boolean!
   }
   Mutation: {};
@@ -69,6 +73,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   GetPaymentIntentInput: NexusGenInputs['GetPaymentIntentInput'];
   SubmitEmailInput: NexusGenInputs['SubmitEmailInput'];
   SubmitPledgeInput: NexusGenInputs['SubmitPledgeInput'];
+  PaymentMethod: NexusGenEnums['PaymentMethod'];
 }
 
 export interface NexusGenFieldTypes {
@@ -80,14 +85,16 @@ export interface NexusGenFieldTypes {
     totalPledgeAmountCents: number; // Int!
   }
   GetPaymentIntentResponse: { // field return type
-    clientSecret: string; // String!
+    intentClientSecret: string; // String!
+    intentId: string; // String!
     message: string | null; // String
+    price: number; // Int!
     success: boolean; // Boolean!
   }
   Mutation: { // field return type
     getPaymentIntent: NexusGenRootTypes['GetPaymentIntentResponse']; // GetPaymentIntentResponse!
     submitEmail: NexusGenRootTypes['SubmitEmailResponse']; // SubmitEmailResponse!
-    SubmitPledge: NexusGenRootTypes['SubmitPledgeResponse']; // SubmitPledgeResponse!
+    submitPledge: NexusGenRootTypes['SubmitPledgeResponse']; // SubmitPledgeResponse!
   }
   PledgeStatusType: { // field return type
     amountCents: number; // Int!
@@ -115,7 +122,7 @@ export interface NexusGenArgTypes {
     submitEmail: { // args
       input: NexusGenInputs['SubmitEmailInput']; // SubmitEmailInput!
     }
-    SubmitPledge: { // args
+    submitPledge: { // args
       input: NexusGenInputs['SubmitPledgeInput']; // SubmitPledgeInput!
     }
   }
@@ -130,7 +137,7 @@ export type NexusGenObjectNames = "CampaignStatusType" | "GetPaymentIntentRespon
 
 export type NexusGenInputNames = "GetPaymentIntentInput" | "SubmitEmailInput" | "SubmitPledgeInput";
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = "PaymentMethod";
 
 export type NexusGenInterfaceNames = never;
 

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Elements } from "react-stripe-elements";
 import {
   Paper,
   Typography,
@@ -12,13 +14,13 @@ import {
   RadioGroup,
   Radio
 } from "@material-ui/core";
-import { useSelector } from "react-redux";
 
 import { AppState } from "../../store";
 import { ExternalLink } from "../../components/ExternalLink";
 import Intro from "./components/Intro.component";
 import Terms from "./components/Terms.component";
-import Payment from "./components/Payment.component";
+import Payment from "../Payment/Payment.scene";
+import { useGenericStyles } from "../../styles";
 
 export type Numbers = {
   text: {
@@ -47,7 +49,7 @@ const checks = {
 };
 
 const Pledge = () => {
-  const classes = useStyles();
+  const classes = useGenericStyles();
   const hasToken = useSelector((state: AppState) => state.token.token !== "");
   const [readIntro, setReadIntro] = useState(false);
   const [name, setName] = useState("");
@@ -209,7 +211,7 @@ const Pledge = () => {
 
           {price === -1 ? null : (
             <>
-              <Payment onSuccess={() => {}} price={price} />
+              <Payment legalName={name} onSuccess={() => {}} price={price} />
 
               <Paper className={classes.paper}>
                 <Typography variant="h3">Checkout</Typography>
@@ -226,20 +228,5 @@ const Pledge = () => {
     </div>
   );
 };
-
-export const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    maxWidth: 600,
-    paddingBottom: 300
-  },
-  paper: {
-    padding: theme.spacing(2),
-    marginTop: theme.spacing(2)
-  },
-  p: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
-  }
-}));
 
 export default Pledge;
