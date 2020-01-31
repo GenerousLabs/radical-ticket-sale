@@ -284,6 +284,13 @@ const Pledge = () => {
           {price === -1 ? null : (
             <>
               <Paper className={classes.paper}>
+                <Typography variant="h3">Terms</Typography>
+                <Typography>
+                  Your payment is handled by stripe, on behalf of Kiez Burn e.V.
+                </Typography>
+              </Paper>
+
+              <Paper className={classes.paper}>
                 <Typography variant="h3">Card Details</Typography>
                 <Typography>
                   You have chosen to pay €{(price / 100).toFixed(2)}
