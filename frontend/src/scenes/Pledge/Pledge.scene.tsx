@@ -212,15 +212,6 @@ const Pledge = () => {
           {price === -1 ? null : (
             <>
               <Payment legalName={name} onSuccess={() => {}} price={price} />
-
-              <Paper className={classes.paper}>
-                <Typography variant="h3">Checkout</Typography>
-                <Typography>
-                  If you're happy with all the details above. You can confirm
-                  your order now.
-                </Typography>
-                <Button variant="contained">Checkout</Button>
-              </Paper>
             </>
           )}
         </>
