@@ -67,7 +67,7 @@ const Pledge = () => {
             size="large"
             color="primary"
           >
-            Buy a ticket
+            Start checkout
           </Button>
         </Paper>
       </div>
