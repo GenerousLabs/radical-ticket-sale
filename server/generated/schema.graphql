@@ -10,7 +10,18 @@ type CampaignStatusType {
   totalPledgeAmountCents: Int!
 }
 
+input GetPaymentIntentInput {
+  price: Int!
+}
+
+type GetPaymentIntentResponse {
+  clientSecret: String!
+  message: String
+  success: Boolean!
+}
+
 type Mutation {
+  getPaymentIntent(input: GetPaymentIntentInput!): GetPaymentIntentResponse!
   submitEmail(input: SubmitEmailInput!): SubmitEmailResponse!
   SubmitPledge(input: SubmitPledgeInput!): SubmitPledgeResponse!
 }

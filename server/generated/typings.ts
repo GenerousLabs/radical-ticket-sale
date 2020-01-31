@@ -14,6 +14,9 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  GetPaymentIntentInput: { // input type
+    price: number; // Int!
+  }
   SubmitEmailInput: { // input type
     email: string; // String!
   }
@@ -35,6 +38,11 @@ export interface NexusGenRootTypes {
     minimumAmountCents: number; // Int!
     targetAmountCents: number; // Int!
     totalPledgeAmountCents: number; // Int!
+  }
+  GetPaymentIntentResponse: { // root type
+    clientSecret: string; // String!
+    message?: string | null; // String
+    success: boolean; // Boolean!
   }
   Mutation: {};
   PledgeStatusType: { // root type
@@ -58,6 +66,7 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  GetPaymentIntentInput: NexusGenInputs['GetPaymentIntentInput'];
   SubmitEmailInput: NexusGenInputs['SubmitEmailInput'];
   SubmitPledgeInput: NexusGenInputs['SubmitPledgeInput'];
 }
@@ -70,7 +79,13 @@ export interface NexusGenFieldTypes {
     targetAmountCents: number; // Int!
     totalPledgeAmountCents: number; // Int!
   }
+  GetPaymentIntentResponse: { // field return type
+    clientSecret: string; // String!
+    message: string | null; // String
+    success: boolean; // Boolean!
+  }
   Mutation: { // field return type
+    getPaymentIntent: NexusGenRootTypes['GetPaymentIntentResponse']; // GetPaymentIntentResponse!
     submitEmail: NexusGenRootTypes['SubmitEmailResponse']; // SubmitEmailResponse!
     SubmitPledge: NexusGenRootTypes['SubmitPledgeResponse']; // SubmitPledgeResponse!
   }
@@ -94,6 +109,9 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    getPaymentIntent: { // args
+      input: NexusGenInputs['GetPaymentIntentInput']; // GetPaymentIntentInput!
+    }
     submitEmail: { // args
       input: NexusGenInputs['SubmitEmailInput']; // SubmitEmailInput!
     }
@@ -108,9 +126,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "CampaignStatusType" | "Mutation" | "PledgeStatusType" | "Query" | "SubmitEmailResponse" | "SubmitPledgeResponse";
+export type NexusGenObjectNames = "CampaignStatusType" | "GetPaymentIntentResponse" | "Mutation" | "PledgeStatusType" | "Query" | "SubmitEmailResponse" | "SubmitPledgeResponse";
 
-export type NexusGenInputNames = "SubmitEmailInput" | "SubmitPledgeInput";
+export type NexusGenInputNames = "GetPaymentIntentInput" | "SubmitEmailInput" | "SubmitPledgeInput";
 
 export type NexusGenEnumNames = never;
 
